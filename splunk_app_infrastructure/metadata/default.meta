@@ -1,0 +1,67 @@
+# Application-level permissions
+[props]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[transforms]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[views/investigate]
+access = read : [ * ], write : [ admin ]
+
+[views/alerts]
+access = read : [ * ], write : [ admin ]
+
+[views/configure]
+access = read : [ * ], write : [ admin ]
+
+[views/settings]
+access = read : [ admin ], write : [ admin ]
+
+[alert_actions/em_send_email]
+export = none
+
+[transforms/em_groups]
+access = read : [ * ], write : [ * ]
+export = system
+
+[transforms/em_entity_cache]
+access = read : [ * ], write : [ * ]
+export = system
+
+[macros/transform_sai_groups%281%29]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[macros/transform_all_sai_groups]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[macros/sai_events_indexes]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[macros/convert_k8s_resource_to_megabytes(1)]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[macros/sai_metadata_indexes]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[macros/sai_metrics_indexes]
+access = read : [ * ], write : [ admin ]
+export = system
+
+[savedsearches]
+access = read : [ * ], write : [ admin, power ]
+
+[webhook]
+access = read : [ * ], write : [ admin, power ]
+
+[slack]
+access = read : [ * ], write : [ admin, power ]
+
+[victorops]
+access = read : [ * ], write : [ admin, power ]

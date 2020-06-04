@@ -1,0 +1,5 @@
+response_code,reply_code
+REFUSED,Refused
+SERVFAIL,ServFail
+NOERROR,NoError
+NOTAUTH,NotAuth

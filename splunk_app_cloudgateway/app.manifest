@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "2.0.0",
+  "info": {
+    "id": {
+      "group": null,
+      "name": "splunk_app_cloudgateway",
+      "version": "1.12.2"
+    },
+    "title": "Splunk Cloud Gateway",
+    "author": [
+      {
+        "name": "Splunk Inc.",
+        "email": null,
+        "company": null
+      }
+    ],
+    "releaseDate": null,
+    "description": "Splunk Cloud Gateway",
+    "classification": null,
+    "commonInformationModels": null,
+    "license": {
+      "name": null,
+      "text": "LICENSE.TXT",
+      "uri": null
+    },
+    "privacyPolicy": {
+      "name": null,
+      "text": null,
+      "uri": null
+    },
+    "releaseNotes": {
+      "name": null,
+      "text": null,
+      "uri": null
+    }
+  },
+  "tasks": [
+    "cloudgateway_modular_input://default",
+    "alerts_ttl_modular_input://default",
+    "drone_mode_subscription_modular_input://default",
+    "subscription_modular_input://default",
+    "subscription_clean_up_modular_input://default",
+    "metrics_modular_input://default",
+    "device_role_modular_input://default",
+    "registered_users_list_modular_input://default"
+  ],
+  "dependencies": null,
+  "inputGroups": null,
+  "incompatibleApps": null,
+  "platformRequirements": null,
+  "supportedDeployments": ["*"],
+  "targetWorkloads": ["_search_heads"]
+}

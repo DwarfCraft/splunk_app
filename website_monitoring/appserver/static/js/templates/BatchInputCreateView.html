@@ -1,0 +1,83 @@
+<% if(is_shc) { %>
+	<div class="alert alert-warning">
+    	<i class="icon-alert"></i>
+		You cannot make an input on a Search Head Cluster. Create the input on a forwarder or on the deployer instead.
+    </div>
+<% } else if(!has_permission) { %>
+	<div class="alert alert-warning">
+    	<i class="icon-alert"></i>
+		You do not have permission to make Website Monitoring inputs. You are missing the following capabilities: <%- capabilities_missing.join(", ") %>.
+    </div>
+<% } else { %>
+
+<div id="progress-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-header">
+    <h3>Creating Inputs</h3>
+  </div>
+  <div class="modal-body">
+    <div class="section-header">
+    	Creating the inputs...
+    	<div class="progress">
+		  <div class="bar"></div>
+		</div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary pull-right stop-creating-inputs" data-dismiss="modal">Stop</button>
+  </div>
+</div>
+
+<form class="form-horizontal">
+
+  <h2>Create Multiple Website Monitoring Inputs</h2>
+  Use this form to create a series of website monitoring inputs. If you want to make an individual input (and configure advanced options, use the <a target="_blank" href="../../manager/website_monitoring/adddata/selectsource?modinput=1&input_type=web_ping&input_mode=1">Splunk Manager</a>).
+  <div>
+  You can also <a class="external" target="_blank" href="../../manager/website_monitoring/data/inputs/web_ping">view existing inputs</a> in the Manager.
+  </div>
+  <div class="message-dialogs">
+			<div id="warning-message" class="alert alert-warning hide">
+				<i class="icon-alert"></i>
+				<div class="message">Warning!</div>
+			</div>
+			
+			<div id="info-message" class="alert alert-info hide">
+				<i class="icon-alert"></i>
+				<div class="message">Ok!</div>
+			</div>
+  </div>
+
+  <div class="control-group urls">
+    <label class="control-label" for="urls">URLs</label>
+    <div class="controls">
+      <input type="text" id="urls" placeholder="e.g. https://splunk.com">
+      <span class="help-block ">Enter a list of URLs and press enter or a comma to add another<%if(is_on_cloud) {%>; these must use HTTPS since Splunk Cloud requires encryption<%}%></span>
+    </div>
+  </div>
+
+  <div class="control-group interval">
+    <label class="control-label" for="interval">Interval</label>
+    <div class="controls">
+      <input type="text" id="interval" placeholder="e.g. 2h, 10m">
+      <span class="help-inline" style="display:none">Enter a valid interval such as "4h"</span>
+    </div>
+  </div>
+
+  <div class="control-group timeout">
+    <label class="control-label" for="timeout">Timeout</label>
+    <div class="controls">
+      <input type="text" id="timeout" placeholder="e.g. 30">
+      <span class="help-inline" style="display:none">Enter a valid timeout such as "30"</span>
+      <span class="help-block ">Optional: enter the amount time to wait until considering the connection failed; will default to 30 seconds if not provided</span>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <label class="checkbox">
+        <input type="checkbox" class="dont-duplicate">Don't create input if URL already monitored
+      </label>
+      <button type="button" class="btn btn-primary create-inputs">Create inputs</button>
+    </div>
+  </div>
+</form>
+<% } %>

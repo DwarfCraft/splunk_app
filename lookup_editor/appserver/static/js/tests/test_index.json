@@ -1,0 +1,4 @@
+{
+    "test_lookup_transform_create_view": "../app/lookup_editor/js/tests/TestLookupTransformCreateView",
+    "test_lookup_list_view": "../app/lookup_editor/js/tests/TestLookupListView"
+}

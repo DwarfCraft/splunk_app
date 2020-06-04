@@ -1,0 +1,30 @@
+<setup>
+    <block title="Slack Alert Action">
+        <text>Configure the Slack API </text>
+    </block>
+
+    <block title="Server" endpoint="admin/alert_actions" entity="slack">
+        <input field="param.webhook_url">
+            <label>Webhook URL</label>
+            <type>text</type>
+        </input>
+        <text><![CDATA[
+          In order to obtain the Webhook URL you have to create a new
+          incoming webhook integration for you Slack instance.
+          See <a href="https://api.slack.com/incoming-webhooks">Incoming Webhooks Docs</a> for details.
+        ]]></text>
+
+        <input field="param.from_user">
+            <label>Sender Name</label>
+            <type>text</type>
+        </input>
+        <text>This name will appear in slack as the user sending the message</text>
+
+        <input field="param.from_user_icon">
+            <label>Sender Icon</label>
+            <type>text</type>
+        </input>
+        <text>The avatar/icon shown by the sender of the slack message. This URL needs to be accessible from the internet.</text>
+    </block>
+
+</setup>

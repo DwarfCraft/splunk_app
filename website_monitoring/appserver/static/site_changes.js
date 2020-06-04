@@ -1,0 +1,1 @@
+require.config({paths:{website_status_cell_renderer:"../app/website_monitoring/WebsiteStatusCellRenderer"}});require(["jquery","underscore","splunkjs/mvc","website_status_cell_renderer","splunkjs/mvc/simplexml/ready!"],function(d,b,e,c){var a=e.Components.get("element1");a.getVisualization(function(f){f.table.addCellRenderer(new c());f.table.render()})});

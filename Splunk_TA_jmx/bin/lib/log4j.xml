@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+ <appenders>
+  <RollingFile name="jmxLog" fileName="${sys:splunkhome}/var/log/splunk/jmx.log" filePattern="${sys:splunkhome}/var/log/splunk/jmx.log.%i" append="true">
+   <PatternLayout pattern="%d - %c -%-4r [%t] %-5p %x - %m%n"/>
+   <SizeBasedTriggeringPolicy size="10mb" />
+   <DefaultRolloverStrategy max="3"/>
+  </RollingFile>
+ </appenders>
+ <loggers>
+  <root level="info">
+   <appender-ref ref="jmxLog"/>
+  </root>
+ </loggers>
+</configuration>

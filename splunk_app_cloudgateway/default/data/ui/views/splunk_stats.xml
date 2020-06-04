@@ -1,0 +1,66 @@
+<dashboard>
+  <label>Splunk Stats</label>
+  <row>
+    <panel>
+      <title>Seconds</title>
+      <single>
+        <search>
+          <query>| makeresults | eval time=now() | convert dur2sec(time) | eval seconds=(time%60) |  table seconds</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+          <refresh>5s</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Ram</title>
+      <single>
+        <search>
+          <query>| rest splunk_server=local /services/server/info | fields physicalMemoryMB | eval ram = physicalMemoryMB/1024 | fields ram</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <refresh>5s</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x53a051"]</option>
+        <option name="rangeValues">[1]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="useColors">0</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Number of Virtual Cores</title>
+      <single>
+        <search>
+          <query>| rest splunk_server=local /services/server/info | fields numberOfVirtualCores</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0x53a051","0xf8be34","0xdc4e41"]</option>
+        <option name="rangeValues">[30,70]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="useColors">0</option>
+      </single>
+    </panel>
+    <panel>
+      <title>KVStore Status</title>
+      <chart>
+        <search>
+          <query>| rest splunk_server=local /services/server/info | fields version kvStoreStatus | eval range=if(kvStoreStatus=="ready", "100", "0") | fields  range</query>
+          <earliest>-15m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">radialGauge</option>
+        <option name="charting.chart.rangeValues">[0,50,100]</option>
+        <option name="charting.gaugeColors">["0xdc4e41","0x53a051"]</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>

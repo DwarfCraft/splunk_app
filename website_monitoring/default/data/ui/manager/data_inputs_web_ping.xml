@@ -1,0 +1,350 @@
+<endpoint name="data/inputs/web_ping" redirect="exec_summary">
+	<breadcrumb>
+	    <parent hidecurrent="False">datainputstats</parent>
+	    <name>Website Availability Check</name>
+	</breadcrumb>
+	
+	<elements>
+		<element name="inputFields" type="fieldset">
+	      <view name="list"/>
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+	      	
+	        <element name="name" label="Name">
+	          <view name="list"/>
+	          <view name="create"/>
+	        </element>
+	        
+	        <element name="url" type="textfield" label="URL">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">The URL to connect to (must be be either HTTP or HTTPS protocol)</key>
+	        </element>
+	        
+	        <element name="interval" type="textfield" label="Interval">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">The interval defining how often to perform the check; can include time units (e.g. 15m for 15 minutes, 8h for 8 hours)</key>
+	        </element>
+	        
+	        <element name="title" type="textfield" label="Title">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">A short description (typically just the domain name)</key>
+	        </element>
+
+	        <element name="timeout" type="textfield" label="Timeout">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">The maximum number of seconds to wait for a response before giving up</key>
+	        </element>
+
+	        <element name="return_body" type="checkbox" label="Include Raw Output">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">Save the response body</key>
+	        </element>
+
+	        <element name="return_headers" type="checkbox" label="Include Response HTTP Headers">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">Save the response headers</key>
+	        </element>
+		  	
+	      </elements>
+	  	</element>
+	  	
+		<element name="clientCert" type="fieldset">
+		  <key name="legend">Client Certificate Authentication</key>
+	      <view name="list"/>
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+	      
+	        <element name="client_certificate" type="textfield" label="Certificate">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">Defines the path to a client SSL certificate (for client SSL authentication)</key>
+	        </element>
+	        
+	        <element name="client_certificate_key" type="textfield" label="Certificate key">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">Defines the path to the client certificate key (necessary if the key is in a separate file from the certificate)</key>
+	        </element>
+	        
+	      </elements>
+	  </element>
+
+		<element name="contentAnalysis" type="fieldset">
+		  <key name="legend">Content Analysis</key>
+	      <view name="list"/>
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+
+			    <element name="should_contain_string" type="textfield" label="A string that is expected to be present in the content">
+	          <view name="edit"/>
+	          <view name="create"/>
+						<key name="exampleText">The content in the response (i.e. the HTML) will be compared to the above value and will be flagged if the content doesn't include the above string</key>
+	        </element>
+
+	      </elements>
+	  </element>
+
+		<element name="authFields" type="fieldset">
+		  <key name="legend">HTTP Authentication</key>
+	      <view name="list"/>
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+
+					<element name="secure_password_storage" type="secure_password_storage">
+						<view name="edit"/>
+	          <view name="create"/>
+						<key name="prefix">web_ping://</key>
+						<key name="passwordExampleText">The password to use for authenticating (only HTTP authentication supported)</key>
+						<key name="usernameExampleText">The username to use for authenticating (only HTTP authentication supported)</key>
+					</element>
+
+	      </elements>
+	  	</element>
+
+		<element name="thresholdFields" type="fieldset">
+		  <key name="legend">Thresholds</key>
+	      <view name="list"/>
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+
+	        <element name="warning_threshold" type="textfield" label="Warning threshold">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">If the response time is above this number (defined in milliseconds), consider this a warning; leave blank to use global default</key>
+	        </element>
+
+	        <element name="error_threshold" type="textfield" label="Error threshold">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">If the response time is above this number (defined in milliseconds), consider this a failure; leave blank to use global default</key>
+	        </element>
+		</elements>
+		</element>
+	  	
+		<element name="advancedFields" type="fieldset">
+		  <key name="legend">Advanced</key>
+	      <view name="list"/>
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+
+	        <element name="user_agent" type="textfield" label="User-agent">
+	          <view name="edit"/>
+	          <view name="create"/>
+	        </element>
+	        
+					<element name="selection_dialog" type="selection_dialog">
+						<key name="title">Select a user-agent</key>
+						<key name="field_to_populate">user_agent_id</key>
+						<key name="description">Select a predefined user-agent string:</key>
+						<key name="options">
+						{
+							"Internet Explorer 11.0" : "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko",
+							"Internet Explorer 10.0" : "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)",
+							"Internet Explorer 9.0" : "Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)",
+							"Internet Explorer 8.0" :"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; InfoPath.2)",
+							"Internet Explorer 7.0" :"Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)",
+							"Internet Explorer 6.0" :"Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+							"Internet Explorer 5.5" :"Mozilla/4.0 (compatible; MSIE 5.5;)",
+							"Internet Explorer 5.0" :"Mozilla/4.0 (compatible; MSIE 5.00; Windows 98)",
+							
+							"Safari 7.0" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A",
+							"Safari 6.0" : "Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25",
+							"Safari 5.0" : "Mozilla/5.0 (Windows; U; Windows NT 6.1; es-ES) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0 Safari/533.16",
+							"Safari 4.0" : "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/528.16 (KHTML, like Gecko) Version/4.0 Safari/528.16",
+							"Safari 3.0" : "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/523.15 (KHTML, like Gecko) Version/3.0 Safari/523.15",
+							"Safari 2.0" : "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en_US) AppleWebKit/412 (KHTML, like Gecko) Safari/412",
+							"Safari 1.0" : "Mozilla/5.0 (Macintosh; U; PPC Mac OS X; en-us) AppleWebKit/85.7 (KHTML, like Gecko) Safari/85.6",
+							
+							"Firefox 36" : "Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0",
+							"Firefox 33" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10; rv:33.0) Gecko/20100101 Firefox/33.0",
+							"Firefox 31" : "Mozilla/5.0 (X11; Linux i586; rv:31.0) Gecko/20100101 Firefox/31.0",
+							"Firefox 29" : "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/29.0",
+							"Firefox 28" : "Mozilla/5.0 (X11; OpenBSD amd64; rv:28.0) Gecko/20100101 Firefox/28.0",
+							"Firefox 27" : "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:27.0) Gecko/20121011 Firefox/27.0",
+							"Firefox 25" : "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/25.0",
+							
+							"Chrome 41" : "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36",
+							"Chrome 37" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36",
+							"Chrome 36" : "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.67 Safari/537.36",
+							"Chrome 35" : "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.3319.102 Safari/537.36",
+							"Chrome 34" : "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1866.237 Safari/537.36",
+							"Chrome 33" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.517 Safari/537.36",
+							"Chrome 32" : "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36",
+							
+							"Googlebot 2.1" : "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+							"Default (Splunk Website Monitoring)" : "Splunk Website Monitoring (+https://splunkbase.splunk.com/app/1493/)"
+							
+						}
+						</key>
+							<view name="create"/>
+								<view name="edit"/>
+					</element>
+	      
+	        <element name="configuration" type="textfield" label="Configuration stanza">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">Indicates which stanza in website_monitoring.conf to get the configuration information from</key>
+	        </element>
+	        
+	        <element name="max_redirects" type="textfield" label="Maximum number of redirects to follow">
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <key name="exampleText">The maximum number of redirects to follow; leave blank to allow unlimited redirects</key>
+	        </element>
+	      </elements>
+	  	</element>
+	  	
+	  	<!-- The sourcetype selection content is typically in the page by default -->
+	    <element name="spl-ctrl_EnableAdvanced" type="checkbox" 
+		     label="More settings" class="spl-mgr-advanced-switch">
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <onChange>
+	        <key name="_action">showonly</key>
+	        <key name="0">NONE</key>
+	        <key name="1">ALL</key>
+	        <group_set>
+	          <group name="advanced"/>
+	        </group_set>
+	      </onChange>
+	    </element>
+	    <element name="sourcetype_selection_fix" type="sourcetype_selection_fix">
+		  <view name="create"/>
+	      <view name="edit"/>
+		</element>
+	    <element name="advanced" type="fieldset" class="spl-mgr-advanced-options">
+	      <view name="edit"/>
+	      <view name="create"/>
+	      <elements>
+		    <element name="sourcetypeFields" type="fieldset">
+		      <view name="list"/>
+		      <view name="edit"/>
+		      <view name="create"/>
+		      <elements>
+		        <element name="spl-ctrl_sourcetypeSelect" type="select" label="Set the source type">
+		          <onChange>
+		            <key name="auto">NONE</key>
+		            <key name="_action">showonly</key>
+		            <group_set>
+		              <group name="sourcetype"/>
+		              <group name="spl-ctrl_from_list"/>
+		            </group_set>
+		            <key name="sourcetype">sourcetype</key>
+		            <key name="spl-ctrl_from_list">spl-ctrl_from_list</key>
+		          </onChange>
+		          <options>
+		            <opt value="auto" label="Automatic"/>
+		            <opt value="sourcetype" label="Manual"/>
+		            <opt value="spl-ctrl_from_list" label="From list"/>
+		          </options>
+		          <view name="edit"/>
+		          <view name="create"/>
+		          <key name="exampleText">When this is set to automatic, Splunk classifies and 
+		          		assigns the sourcetype automatically, and gives unknown sourcetypes 
+		          		placeholder names.</key>
+		          <key name="processValueEdit">[[ e for e in ['sourcetype'] 
+		                        if form_defaults.get(e) ][0]]</key>
+		          <key name="processValueAdd">[[ e for e in ['sourcetype'] 
+		                        if form_defaults.get(e) ][0]]</key>
+		        </element>
+		        <element name="sourcetype" type="textfield" label="Source type">
+		          <view name="list"/>
+		          <view name="edit"/>
+		          <view name="create"/>
+		          <key name="processValueList">_('Automatic') if (value==None or value=='') else value</key>
+		          <key name="submitValueAdd">value if 
+		                        form_data.get('spl-ctrl_sourcetypeSelect')=='sourcetype' 
+		          		else (form_data.get('spl-ctrl_from_list') 
+		          		if form_data.get('spl-ctrl_sourcetypeSelect')=='spl-ctrl_from_list' 
+		                        else '')</key>
+		          <key name="submitValueEdit">value if 
+		                        form_data.get('spl-ctrl_sourcetypeSelect')=='sourcetype' 
+		            	        else (form_data.get('spl-ctrl_from_list') 
+		            	        if form_data.get('spl-ctrl_sourcetypeSelect')=='spl-ctrl_from_list' 
+		                        else '')</key>
+		          <key name="labelList">Source type</key>
+		        </element>
+		        <element name="spl-ctrl_from_list" type="select" label="Select source type from list">
+		          <view name="edit"/>
+		          <view name="create"/>
+		          <key name="exampleText">Splunk classifies all common data types automatically, 
+		            	but if you're looking for something specific, you can find more source types 
+			    	in the <![CDATA[<a href="../../../apps/remote">Splunkbase apps browser</a>]]> 
+		            	or online at <![CDATA[<a href="http://www.splunkbase.com/" 
+				target="_blank">www.splunkbase.com</a>]]>.</key>
+		          <key name="requiredIfVisible" />
+		          <key name="dynamicOptions" type="dict">
+		            <key name="prefixOptions" type="list">
+		              <item type="list">
+		                <item></item>
+		                <item>Choose...</item>
+		              </item>
+		            </key>
+		            <key name="keyName">title</key>
+		            <key name="keyValue">title</key>
+		            <key name="splunkSource">/saved/sourcetypes</key>
+		            <key name="splunkSourceParams" type="dict">
+		              <key name="count">-1</key>
+		              <key name="search">'pulldown_type=true'</key>
+		            </key>
+		          </key>
+		        </element>
+		      </elements>
+		      <key name="legend">Source type</key>
+		      <key name="helpText">Tell Splunk what kind of data this is so you can group it with 
+		                        other data of the same type when you search. Splunk does this 
+		                        automatically, but you can specify what you want if Splunk gets it 
+		                        wrong.</key>
+		    </element>
+	        <element name="hostFields" type="fieldset">
+	          <key name="legend">Host</key>
+	          <view name="list"/>
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <elements>
+	            <element name="host" type="textfield" label="Host field value">
+	              <view name="edit"/>
+	              <view name="create"/>
+	            </element>
+	          </elements>
+	        </element>  
+	        <element name="indexField" type="fieldset">
+	          <key name="legend">Index</key>
+	          <key name="helpText">Set the destination index for this source.</key>
+	          <view name="list"/>
+	          <view name="edit"/>
+	          <view name="create"/>
+	          <elements>
+	            <element name="index" type="select" label="Index">
+	              <view name="list"/>
+	              <view name="edit"/>
+	              <view name="create"/>
+	              <key name="dynamicOptions" type="dict">
+	                <key name="keyName">title</key>
+	                <key name="keyValue">title</key>
+	                <key name="splunkSource">/data/indexes</key>
+	                <key name="splunkSourceParams" type="dict">
+	                  <key name="search">'isInternal=false disabled=false'</key>
+	                  <key name="count">-1</key>
+	                </key>
+	              </key>
+	            </element>
+	          </elements>
+	        </element>
+	      </elements>
+	    </element>
+	  	
+      </elements>
+</endpoint>

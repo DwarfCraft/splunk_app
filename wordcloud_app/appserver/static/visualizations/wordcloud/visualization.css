@@ -1,0 +1,18 @@
+.blink { 
+    animation-name: blinkanim;
+    animation-duration: .8s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+}
+.splunk {
+    text-shadow: 3px 3px white;
+}
+
+@keyframes blinkanim {
+    from {
+        opacity:.9;
+    }
+    to {
+        opacity:.3;
+    }
+}

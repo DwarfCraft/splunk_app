@@ -1,0 +1,8 @@
+<nav search_view="search" color="transparent">
+  <view name="heat_map_visualization"  default="true" />
+  <view name="examples" />
+  <view name="drill_down" />
+  <view name="dark_theme" />
+  <view name="settings" />
+  
+</nav>

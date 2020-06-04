@@ -1,0 +1,183 @@
+.dropdown-secondary > .dropdown-toggle{
+	border-radius: 0px;
+	border: 0px;
+	background: transparent !important;
+	box-shadow: inset 0 0 0 !important;
+	color: #1e93c6;
+}
+
+.progress{
+	width: 400px;
+}
+
+.app-filter{
+	margin-top: 8px;
+	margin-left: 16px;
+}
+
+.app-filter > .dropdown-menu > li > a{
+   padding-left: 22px;
+}
+
+.dropdown-menu{
+	background-color: white;
+}
+
+.icon-check.hide{
+      display: none;
+}
+
+.dropdown-secondary > ul{
+    max-height: 320px;
+    overflow-y: scroll;
+}
+
+#content{ /* Make sure that the dropdowns have room even if there isn't much content */
+	min-height: 360px;
+}
+
+.search-query{
+	margin-top: 8px;
+	margin-left: 16px;
+}
+
+.loading-placeholder{
+	margin-left: 64px;
+	margin-top:64px;
+}
+
+
+.new-host-button-group{
+	margin-top: 8px;
+	margin-right: 16px;
+}
+
+#table_wrapper > .row-fluid:first-child{
+	display: none;
+}
+
+#table_wrapper > .row-fluid {
+    margin-top: 16px;
+    margin-left: 16px;
+}
+
+#table_wrapper{
+	clear: both; /* SOLNESS-7190 */
+}
+
+#table_paginate{
+	float: right;
+	margin-right: 32px
+}
+
+td{
+	background-color: white;
+}
+
+.delete-host-info-table{
+	margin: 16px 0 8px 8px;
+}
+
+.delete-host-info{
+    font-weight: bold;
+    padding-right: 12px;
+}
+
+.form-search{
+	margin-bottom:8px;
+}
+
+.action-link{
+	margin-right: 8px;
+	margin-left: 2px;
+}
+
+.host-count{
+	padding-top: 13px;
+	padding-left: 12px;
+}
+
+#success_message, #failure_message{
+	margin-left:16px;
+	margin-bottom:0px;
+}
+
+.required-input:after {
+	content:" *";
+	color: #d6563c;
+	font-weight: 700;
+}
+
+/**
+ * Show an icon before the host information
+ */
+.host-online:before{
+    color: #58c126 !important;
+    display: inline !important;
+}
+
+.host-offline:before{
+    color: #a5a5a5 !important;
+    display: inline !important;
+}
+
+.host-unknown:before{
+    color: #292929 !important;
+    display: inline !important;
+}
+
+/*
+ * Fix highlight color on the dropdown button
+ */
+.btn-group.open .btn-primary.dropdown-toggle {
+    background-color: #65a637;
+}
+
+/**
+ * Highlight changes in the host status
+ */
+@keyframes highlighted-online {
+  0% {
+    background: #58c126;
+	box-shadow: 0 0 0 0 #58c126;
+  }
+
+  70% {
+	box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+  }
+
+  100% {
+    background: inherit;
+	box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
+}
+
+.fade-online:before{
+	-moz-animation: highlighted-online 2.5s;
+ 	-webkit-animation: highlighted-online 2.5s;
+  	-o-animation: highlighted-online 2.5s;
+  	animation: highlighted-online 2.5s;
+}
+
+@keyframes highlighted-offline {
+  0% {
+    background: #a5a5a5;
+	box-shadow: 0 0 0 0 #a5a5a5;
+  }
+
+  70% {
+	box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+  }
+
+  100% {
+    background: inherit;
+	box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+  }
+}
+
+.fade-offline:before{
+	-moz-animation: highlighted-offline 2.5s;
+ 	-webkit-animation: highlighted-offline 2.5s;
+  	-o-animation: highlighted-offline 2.5s;
+  	animation: highlighted-offline 2.5s;
+}

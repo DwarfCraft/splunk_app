@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<form script="site_changes.js" >
+	<label>Change History</label>
+		
+	<fieldset>
+		<input type="time">
+			<default>Last 24 hours</default>
+		</input>
+		<input type="text" token="title">
+			<label>Site Title:</label>
+			<default>*</default>
+		</input>
+	</fieldset>
+	<row>
+		<table>
+			<search>
+    			<query>
+    				sourcetype="web_ping" `website_monitoring_search_index` title="$title$" | eval content_hash=if(isnotnull(content_md5),content_md5,content_sha224) | stats count, min(_time) as changed, max(_time) as last_observed by url, content_hash, title | sort -changed | `timesince(changed,since_last_changed)` | convert ctime(changed) | convert ctime(last_observed) | fields title url changed since_last_changed last_observed count
+				</query>
+			</search>
+			<title>Change History</title>
+			<option name="count">10</option>
+			<option name="rowNumbers">true</option>
+		</table>
+	</row>
+</form>

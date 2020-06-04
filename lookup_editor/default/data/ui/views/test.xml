@@ -1,0 +1,5 @@
+<dashboard script="tests.js" stylesheet="tests.css" isDashboard="false" isVisible="false" hideEdit="true">
+    <label>Lookup Editor Tests</label>
+    <row>
+    </row>
+</dashboard>

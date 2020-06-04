@@ -1,0 +1,83 @@
+[]
+access = read : [ * ], write : [ cloudgateway ]
+
+[alert_actions/mobile_alert]
+export = system
+
+[alerts]
+export = system
+
+[restmap]
+export = system
+
+[props]
+export = system
+
+[views/cloud_gateway_status_dashboard]
+access = read : [ admin, sc_admin ], write : [ admin, sc_admin ]
+export = system
+
+[views/splunk_stats]
+access = read : [*], write : [cloudgateway]
+export = system
+
+[views/ar]
+access = read : [ admin, sc_admin, cloudgateway ], write : [ admin, sc_admin, ar_admin ]
+
+[views/configure]
+access = read : [ admin, sc_admin ], write : [ admin, sc_admin ]
+
+[views/nlp]
+access = read : [ admin, sc_admin, cloudgateway ], write : [ admin, sc_admin, cloudgateway ]
+
+[collections/ar_dashboards]
+access = read : [ * ], write: [ ar_admin ]
+
+[collection/ar_beacons]
+access = read : [ * ], write: [ ar_admin ]
+
+[collection/ar_beacon_regions]
+access = read : [ * ], write: [ ar_admin ]
+
+[collection/ar_geofences]
+access = read : [ * ], write: [ ar_admin ]
+
+[collection/assets]
+access = read : [ * ], write: [ ar_admin ]
+
+[collection/asset_groups]
+access = read : [ * ], write: [ ar_admin ]
+
+[collection/ar_workspaces]
+access = read : [ * ], write: [ ar_admin ]
+
+[collections/searches]
+access = read : [ * ], write : [ * ]
+
+[collections/subscriptions]
+access = read : [ * ], write : [ * ]
+
+[commands/checkmobilehttps]
+access = read : [ cloudgateway ], write : [ cloudgateway ]
+export = system
+owner = nobody
+
+[commands/checkmobilewss]
+access = read : [ cloudgateway ], write : [ cloudgateway ]
+export = system
+owner = nobody
+
+[commands/checknlpconnectivity]
+access = read : [ cloudgateway ], write : [ cloudgateway ]
+export = system
+owner = nobody
+
+[commands/checkmobileasync]
+access = read : [ cloudgateway ], write : [ cloudgateway ]
+export = system
+owner = nobody
+
+[commands/scgpstree]
+access = read : [ cloudgateway ], write : [ cloudgateway ]
+export = system
+owner = nobody

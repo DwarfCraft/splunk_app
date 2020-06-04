@@ -1,0 +1,90 @@
+<form class="splunk-formatter-section" section-label="General">
+    <div class="control-group">
+        <label class="control-label">Alignment Mode</label>
+        <div class="controls controls-fill">   
+            <splunk-select name="display.visualizations.custom.wordcloud_app.wordcloud.alignmentMode" value="horizontal">
+                <option value="horizontal">Horizontal</option>
+                <option value="vertical">Vertical</option>
+                <option value="hovert">Both</option>
+                <option value="random">Random</option>
+            </splunk-select> 
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Color">
+    <div class="control-group">
+        <label class="control-label">Use colors</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.wordcloud_app.wordcloud.useColors" value="true">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Color By</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.wordcloud_app.wordcloud.colorBy" value="colorMode">
+                <option value="colorMode">Color Mode</option>
+                <option value="field">Field</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Color Mode</label>
+        <div class="controls controls-fill">
+            <splunk-select name="display.visualizations.custom.wordcloud_app.wordcloud.colorMode" value="categorical">
+                <option value="categorical">Categorical</option>
+                <option value="sequential">Sequential</option>
+            </splunk-select> 
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label"># of bins</label>
+        <div class="controls controls-fill">
+            <splunk-select name="display.visualizations.custom.wordcloud_app.wordcloud.numOfBins" value="3">
+                <option value="-1">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </splunk-select> 
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Min color</label>
+        <div class="controls controls-fill">
+            <splunk-color-picker name="display.visualizations.custom.wordcloud_app.wordcloud.minColor" value="#d93f3c"></splunk-color-picker>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Max color</label>
+        <div class="controls controls-fill">
+            <splunk-color-picker name="display.visualizations.custom.wordcloud_app.wordcloud.maxColor" value="#3fc77a"></splunk-color-picker>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Theme</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.wordcloud_app.wordcloud.backgroundColor" value="#fff">
+                <option value="#fff">Light</option>
+                <option value="#222">Dark</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>
+<form class="splunk-formatter-section" section-label="Fun">
+    <div class="control-group">
+        <label class="control-label">Feeling Splunktastic?</label>
+        <div class="controls controls-fill">
+            <splunk-radio-input name="display.visualizations.custom.wordcloud_app.wordcloud.splunkTastic" value="false">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </splunk-radio-input>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,7 @@
+vendor_action,action
+no longer listening on,non-listening
+listening on,listening
+sending notifies,send-notify
+sending notify to,send-notify
+notify to,send-notify
+notify response from,recv-notify

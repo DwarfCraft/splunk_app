@@ -1,0 +1,152 @@
+"""
+(C) 2019 Splunk Inc. All rights reserved.
+
+Module for input token support
+"""
+
+import re
+import json
+from spacebridgeapp.util.constants import MAX_TOKEN_CHARACTERS
+from spacebridgeapp.data import form_input_data
+
+EARLIEST = 'earliest'
+LATEST = 'latest'
+DEFAULT_EARLIEST = '0'
+DEFAULT_LATEST = ''
+
+
+def inject_time_tokens(input_tokens, input_earliest, input_latest):
+    """
+    This handles special default code for time token with regards to earliest and latest values.
+
+    Implicitly if a time input is defined without a token value it will default to represent the
+    values $earliest$ and $latest$
+
+    :param input_tokens:
+    :param input_earliest:
+    :param input_latest:
+    :return:
+    """
+    global_earliest = input_tokens[EARLIEST] if input_tokens and EARLIEST in input_tokens else DEFAULT_EARLIEST
+    global_latest = input_tokens[LATEST] if input_tokens and LATEST in input_tokens else DEFAULT_LATEST
+    earliest = inject_tokens_into_string(input_tokens, input_earliest, global_earliest)
+    latest = inject_tokens_into_string(input_tokens, input_latest, global_latest)
+    return earliest, latest
+
+
+_INPUT_TOKEN_PATTERN = re.compile(r'\$+(.*?)\$+')
+_INPUT_TOKEN_REPLACE = re.compile(r'\$+.*?\$+')
+
+
+def inject_tokens_into_string(input_tokens, query, default=None):
+    """
+    Takes a map of input tokens to values and a spl query string and replaces instances of substrings of the form
+    $token_name$ with the corresponding token value.
+
+    E.g.
+    inject_tokens_into_search({'app':'spacebridge'}, 'app=$app$') -> 'app=spacebridge'
+
+    :param input_tokens: Map[String, String] of token name and token value
+    :param query: [String] SPL Query
+    :param default: [String] Default value for missing input_tokens
+    :return: [String] Transformed SPL query
+    """
+    if input_tokens is None:
+        input_tokens = {}
+
+    # Return the default value if query is not defined
+    if not query and default is not None:
+        return default
+
+    # Parse for tokens in query update missing input_tokens with default_value if specified, otherwise return original
+
+    transformed_query = ''
+    remaining_query = query
+    while len(remaining_query) > 0:
+        result = _INPUT_TOKEN_PATTERN.search(remaining_query)
+        if result:
+            token = result.group(1)
+            split_index = remaining_query.find(result.group(0)) + len(result.group(0))
+            token_query = remaining_query[:split_index]
+            remaining_query = remaining_query[split_index:]
+
+            # Check if token ends with '|s' then we should wrap the value in quotation marks
+            wrap_with_quotations = False
+            if token.endswith('|s'):
+                wrap_with_quotations = True
+                token = token[:-2]  # slice off the '|s'
+
+            # Check is token is even in input_token keys
+            if token in input_tokens.keys() and is_valid_token(input_tokens[token]):
+                if wrap_with_quotations:
+                    input_token = '"{}"'.format(input_tokens[token])
+                else:
+                    input_token = input_tokens[token]
+                token_query = _INPUT_TOKEN_REPLACE.sub(input_token, token_query)
+            elif default is not None:
+                token_query = _INPUT_TOKEN_REPLACE.sub(default, token_query)
+            transformed_query += token_query
+        else:
+            transformed_query += remaining_query
+            break
+
+    return transformed_query
+
+
+def is_valid_token(token):
+    """
+    Check if input token is valid. Ensure it doesn't contain characters in blacklist
+    """
+    blacklist = re.compile(r'[|]')
+    return len(token) <= MAX_TOKEN_CHARACTERS and not blacklist.search(token)
+
+
+def set_default_token_values(input_tokens, input_tokens_meta):
+    """
+    Populate input tokens with default values if they are not already populated
+    :param input_tokens: map of input tokens to values specified by user
+    :param input_tokens_meta: list of input token objects which contain default value for each token
+    :return: None. modifies the input_tokens object.
+    """
+    for input_token_schema in input_tokens_meta:
+
+        token_name = input_token_schema.token_name
+        if isinstance(input_token_schema.input_type, form_input_data.Timepicker):
+            default_earliest = input_token_schema.input_type.default_earliest
+            default_latest = input_token_schema.input_type.default_latest
+            earliest_tokenname = token_name + ".earliest" if token_name else "earliest"
+            latest_tokenname = token_name + ".latest" if token_name else "latest"
+
+            if default_earliest and earliest_tokenname not in input_tokens.keys():
+                input_tokens[earliest_tokenname] = default_earliest
+
+            if default_latest and latest_tokenname not in input_tokens.keys():
+                input_tokens[latest_tokenname] = default_latest
+
+            continue
+
+        # Default value for the input. If the user does not select or input a value, this value is used.
+        # Overrides the initialValue.
+        if isinstance(input_token_schema.input_type, form_input_data.FormListInput):
+            if input_token_schema.input_type.default_value:
+                default_value = input_token_schema.input_type.default_value
+            else:
+                default_value = input_token_schema.input_type.initial_value
+        else:
+            default_value = input_token_schema.default_value
+
+        if default_value and token_name not in input_tokens.keys():
+            input_tokens[token_name] = default_value
+
+
+def load_input_tokens(search_input_tokens_str):
+    """
+    Helper method to parse search input_tokens json string
+    :param search_input_tokens_str:
+    :return:
+    """
+    if search_input_tokens_str is not None:
+        input_tokens = json.loads(search_input_tokens_str)
+    else:
+        input_tokens = {}
+    return input_tokens

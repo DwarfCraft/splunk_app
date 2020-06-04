@@ -1,0 +1,12 @@
+itoamodels-0.6.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+itoamodels-0.6.1.dist-info/METADATA,sha256=_5ESNAgyuh_7AcjM_d190Gu9W5og0I0scQldUQdHirQ,312
+itoamodels-0.6.1.dist-info/RECORD,,
+itoamodels-0.6.1.dist-info/WHEEL,sha256=rhIUU3k_gV2iCypONLq-yw8hAvGuX-BoDgL_ovBiHW0,93
+itoamodels-0.6.1.dist-info/top_level.txt,sha256=F-hqYffOaOPL3lfqiNyT5zjY7r2NvLlNgZgFvxd1Sg8,11
+itoamodels/__init__.py,sha256=Wc5nsCVfu0qJduVXFkR31lCc6vYMgif0312jkbOexos,302
+itoamodels/base.py,sha256=8SXym-Eqv0I7J545xhz9HiMEeOyMWZry-ZTwV-bp5Bs,3417
+itoamodels/fields.py,sha256=6h613A1Kkb4TVa1FNnb67h7Awcc8mH9jcn8UHrPG354,3799
+itoamodels/migrations/__init__.py,sha256=4AmOODljcSAAGnTfI95UFxp_BBwKzDiHl12Z-q2KJBg,60
+itoamodels/migrations/entity.py,sha256=9E0S5dEvemE5jv2D5J5aK6lrGFyw9R8QBlvsVx6rgQw,523
+itoamodels/migrators.py,sha256=AiXgnwiRZutwOUj7pTOKwy4k_IA12frB9QvS4sCA-z8,1752
+itoamodels/models.py,sha256=937hCfhCdMewANHYjtaJZ4Fkd9hHNKYhW-xGk-UIn5g,1382

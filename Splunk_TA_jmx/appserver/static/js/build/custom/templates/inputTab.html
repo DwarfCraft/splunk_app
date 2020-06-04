@@ -1,0 +1,91 @@
+<ul class="nav nav-tabs">
+  <li class="active" id="serversli"><a href="#" class="glyphicon glyphicon-retweet icon-cloud" id="servers-li">
+      Servers </a> </li>
+  <li class="" id="templatesli"><a href="#" id="templates-li" class="glyphicon glyphicon-list-alt icon-list">Templates</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane serverTab" style="display: block;">
+    <div class="bootstrap-table">
+      <div class="fixed-table-container">
+        <table class="table table-chrome table-striped table-row-expanding table-listing serversDataTable">
+          <thead class="table-head shared-tablehead" data-cid="view6630" data-view="views/shared/TableHead"
+            data-render-time="0.001">
+            <tr class="">
+              <th class="bs-checkbox " style="width: 36px; " data-field="_selected" tabindex="0">
+                <div class="th-inner ">
+                  <input name="btSelectAll" id="serverSelectBox" type="checkbox">
+                </div>
+                <div class="fht-cell"></div>
+              </th>
+              <th data-key="name" class="sorts active asc col-name">
+                <a href="#">Name</a>
+              </th>
+              <th data-key="description" class="sorts col-description">
+                <a href="#">Description</a>
+              </th>
+              <th data-key="interval" class="sorts col-interval">
+                <a href="#">Interval</a>
+              </th>
+              <th data-key="destinationapp" class="sorts col-destinationapp">
+                <a href="#">App</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="app-listings serversData"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane templatesTab" style="display: none;">
+    <div class="bootstrap-table">
+      <div class="fixed-table-container">
+        <table class="table table-chrome table-striped table-row-expanding table-listing templatesDataTable">
+          <thead class="table-head shared-tablehead" data-cid="view6630" data-view="views/shared/TableHead"
+            data-render-time="0.001">
+            <tr class="">
+              <th class="bs-checkbox " style="width: 36px; " data-field="_selected" tabindex="0">
+                <div class="th-inner ">
+                  <input id="templateSelectBox" name="btSelectAll" type="checkbox">
+                </div>
+                <div class="fht-cell"></div>
+              </th>
+              <th data-key="name" class="sorts active asc col-name">
+                <a href="#">Name</a>
+              </th>
+              <th data-key="description" class="sorts col-description">
+                <a href="#">Description</a>
+              </th>
+              <th data-key="destinationapp" class="sorts col-destinationapp">
+                <a href="#">App</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="app-listings templatesData"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-body {
+    position: relative;
+    padding: 20px;
+  }
+
+  .fixed-table-container {
+    position: relative;
+    clear: both;
+    border: 1px solid #ddd;
+  }
+
+  .nav {
+    margin-bottom: 16px;
+  }
+
+  .nav-tabs>.active,
+  .nav-tabs>.active:hover {
+    border-bottom: 0px;
+  }
+</style>

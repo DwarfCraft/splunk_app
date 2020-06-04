@@ -1,0 +1,105 @@
+<dashboard>
+  <label>Wordcloud Gallery</label>
+  <row>
+    <panel>
+      <title>Use colors</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Use colors + Vertical Alignment</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">vertical</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Use colors + Random Alignment</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">random</option>
+      </viz>
+    </panel>
+    <panel>
+      <title>Use colors + Horizontal &amp; Vertical Alignment + Dark Theme</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">hovert</option>
+        <option name="wordcloud_app.wordcloud.backgroundColor">#222</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Use colors + Horizontal &amp; Vertical Alignment + Dark Theme + Color by query field</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count | eval color = "red" | table word count color</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">hovert</option>
+        <option name="wordcloud_app.wordcloud.backgroundColor">#222</option>
+        <option name="wordcloud_app.wordcloud.colorBy">field</option>
+      </viz>
+    </panel>
+     <panel>
+      <title>Use colors + Horizontal Alignment + Color by ColorMode + ColorMode Categorical + 3 bins</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">horizontal</option>
+        <option name="wordcloud_app.wordcloud.colorBy">colorMode</option>
+        <option name="wordcloud_app.wordcloud.colorMode">categorical</option>
+        <option name="wordcloud_app.wordcloud.numOfBins">3</option>
+      </viz>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Feeling Splunktastic!</title>
+      <viz type="wordcloud_app.wordcloud">
+        <search>
+          <query>| inputlookup "words.csv" | stats count by word | sort -count </query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wordcloud_app.wordcloud.useColors">true</option>
+        <option name="wordcloud_app.wordcloud.alignmentMode">random</option>
+        <option name="wordcloud_app.wordcloud.backgroundColor">#222</option>
+        <option name="wordcloud_app.wordcloud.colorBy">colorMode</option>
+        <option name="wordcloud_app.wordcloud.colorMode">categorical</option>
+        <option name="wordcloud_app.wordcloud.numOfBins">8</option>
+        <option name="wordcloud_app.wordcloud.splunkTastic">true</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

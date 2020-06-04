@@ -1,0 +1,11 @@
+<nav>
+    <view name="register" default="true" />
+    <view name="all_devices" />
+    <view name="ar" />
+    <view name="nlp" />
+    <view name="configure" />
+    <view name="app_selection" />
+    <collection label="Dashboards">
+        <view name="cloud_gateway_status_dashboard" />
+    </collection>
+</nav>

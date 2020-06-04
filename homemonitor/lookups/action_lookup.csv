@@ -1,0 +1,8 @@
+action,action2
+BLOCK,BLOCK
+ACCEPT,ACCEPT
+pass,ACCEPT
+block,BLOCK
+DROP,BLOCK
+Accepted,ACCEPT
+Blocked, BLOCK

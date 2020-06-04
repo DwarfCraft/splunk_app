@@ -1,0 +1,174 @@
+<html>
+<head><script src="scripts/apex.js"></script>
+<body>
+
+
+<div id="chart"></div>
+
+<script>
+    function generateData(count, yrange) {
+      var i = 0;
+      var series = [];
+      while (i < count) {
+        var x = (i + 1).toString();
+        var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+        series.push({
+          x: x,
+          y: y
+        });
+        i++;
+      }
+      return series;
+    }
+
+
+    var options = {
+      chart: {
+        height: 350,
+        type: 'heatmap',
+      },
+	  yaxis: {
+		labels: {
+		show: true,
+        minWidth: 100,
+        maxWidth: 250,
+        style: {
+            color: undefined,
+            fontSize: '18px',
+            fontFamily: 'Splunk Platform Sans,Proxima Nova,Roboto,Droid,Helvetica Neue,Helvetica,Arial,sans-serif',
+            cssClass: 'apexcharts-yaxis-label',
+        }
+ 		}
+	  },
+      plotOptions: {
+        heatmap: {
+          shadeIntensity: 0.5,
+		 radius: 0,
+		 enableShades: true,
+          colorScale: {
+            ranges: [{
+                from: -99999,
+                to: 5,
+                name: 'low',
+                color: '#00A100'
+              },
+              {
+                from: 5.01,
+                to: 20,
+                name: 'medium',
+                color: '#128FD9'
+              },
+              {
+                from: 20.01,
+                to: 45,
+                name: 'high',
+                color: '#FFB200'
+              },
+              {
+                from: 45.01,
+                to: 99999999,
+                name: 'extreme',
+                color: '#FF0000'
+              }
+            ]
+          }
+        }
+      },
+	  dataLabels: {
+        enabled: true,
+        style: {
+          colors: ['#fff']
+        }
+      },
+      series: [{
+          name: 'January Sales',
+          data: generateData(20, {
+            min: 0,
+            max: 2
+          })
+        },
+        {
+          name: 'February Sales Figures',
+          data: generateData(20, {
+            min: 10,
+            max: 15
+          })
+        },
+        {
+          name: 'March Sales Figures',
+          data: generateData(20, {
+            min: 20,
+            max: 30
+          })
+        },
+        {
+          name: 'April  Sales Figures',
+          data: generateData(20, {
+            min: 45,
+            max: 55
+          })
+        },
+        {
+          name: 'May',
+          data: generateData(20, {
+            min: 30,
+            max: 55
+          })
+        },
+        {
+          name: 'Jun',
+          data: generateData(20, {
+            min: -30,
+            max: 55
+          })
+        },
+        {
+          name: 'Jul',
+          data: generateData(20, {
+            min: -30,
+            max: 55
+          })
+        },
+        {
+          name: 'Aug',
+          data: generateData(20, {
+            min: -30,
+            max: 55
+          })
+        },
+        {
+          name: 'Sep',
+          data: generateData(20, {
+            min: -30,
+            max: 55
+          })
+        }
+      ],
+      title: {
+        text: 'HeatMap Chart with Color Range'
+      },
+
+	  tooltip:{
+	  theme: "light"
+	  },
+	   grid: {
+				show: true,
+				borderColor: '#ffffff',
+				strokeDashArray: 0,
+				position: 'back',
+				xaxis: {lines: {show: false}},   
+				yaxis: {lines: {show: false}}
+				}
+				
+    }
+
+    var chart = new ApexCharts(
+      document.querySelector("#chart"),
+      options
+    );
+
+    chart.render();
+ </script>
+ 
+ </body></html>

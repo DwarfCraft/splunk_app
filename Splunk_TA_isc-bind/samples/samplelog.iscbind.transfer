@@ -1,0 +1,58 @@
+18-Aug-2015 15:22:58.193 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 15:22:58.193 notify: info: zone 0.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 15:22:58.194 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:22:58.694 notify: debug 3: zone 0.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:23:43.196 notify: debug 2: zone mybindtest.com/IN: notify to ###DEST_IP####53 failed: timed out
+18-Aug-2015 15:23:43.196 notify: debug 1: zone mybindtest.com/IN: notify to ###DEST_IP####53: retries exceeded
+18-Aug-2015 15:23:43.695 notify: debug 2: zone 0.168.192.in-addr.arpa/IN: notify to ###DEST_IP####53 failed: timed out
+18-Aug-2015 15:23:43.695 notify: debug 1: zone 0.168.192.in-addr.arpa/IN: notify to ###DEST_IP####53: retries exceeded
+18-Aug-2015 15:29:15.150 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 15:29:15.150 notify: info: zone 123.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 15:29:15.151 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:29:15.652 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:30:00.153 notify: debug 2: zone mybindtest.com/IN: notify to ###DEST_IP####53 failed: timed out
+18-Aug-2015 15:30:00.153 notify: debug 1: zone mybindtest.com/IN: notify to ###DEST_IP####53: retries exceeded
+18-Aug-2015 15:30:00.654 notify: debug 2: zone 123.168.192.in-addr.arpa/IN: notify to ###DEST_IP####53 failed: timed out
+18-Aug-2015 15:30:00.654 notify: debug 1: zone 123.168.192.in-addr.arpa/IN: notify to ###DEST_IP####53: retries exceeded
+18-Aug-2015 15:40:44.716 notify: info: zone 123.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 15:40:44.716 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 15:40:44.717 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:40:44.719 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:40:45.217 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:40:45.218 notify: debug 3: zone mybindtest.com/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:43:01.111 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 15:43:01.111 notify: info: zone 123.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 15:43:01.112 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:43:01.113 notify: debug 3: zone mybindtest.com/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:43:01.612 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:43:01.614 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:52:32.831 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 15:52:32.831 notify: info: zone 123.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 15:52:32.832 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:52:32.833 notify: debug 3: zone mybindtest.com/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:52:33.332 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:52:33.334 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:59:50.373 notify: info: zone 123.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 15:59:50.373 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 15:59:50.373 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:59:50.378 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 15:59:50.874 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 15:59:50.875 notify: debug 3: zone mybindtest.com/IN: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 16:07:30.517 notify: info: zone mybindtest.com/IN: sending notifies (serial 2014090401)
+18-Aug-2015 16:07:30.518 notify: info: zone 123.168.192.in-addr.arpa/IN: sending notifies (serial 2014090402)
+18-Aug-2015 16:07:30.519 notify: debug 3: zone mybindtest.com/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 16:07:30.521 notify: debug 3: zone mybindtest.com/IN: notify response from ###CLIENT_IP####53: NOTAUTH
+18-Aug-2015 16:07:31.020 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: sending notify to ###DEST_IP####53
+18-Aug-2015 16:07:31.021 notify: debug 3: zone 123.168.192.in-addr.arpa/IN: notify response from ###CLIENT_IP####53: NOTAUTH
+18-Aug-2015 16:45:25.724 notify: info: zone 123.168.192.in-addr.arpa/IN/internal: sending notifies (serial 2014090402)
+18-Aug-2015 16:45:25.724 notify: info: zone mybindtest.com/IN/internal: sending notifies (serial 2014090401)
+18-Aug-2015 16:45:25.724 notify: debug 3: zone 123.168.192.in-addr.arpa/IN/internal: sending notify to ###DEST_IP####53
+18-Aug-2015 16:45:25.729 notify: debug 3: zone 123.168.192.in-addr.arpa/IN/internal: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 16:45:26.224 notify: debug 3: zone mybindtest.com/IN/internal: sending notify to ###DEST_IP####53
+18-Aug-2015 16:45:26.225 notify: debug 3: zone mybindtest.com/IN/internal: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 16:47:14.554 notify: info: zone 123.168.192.in-addr.arpa/IN/internal: sending notifies (serial 2014090402)
+18-Aug-2015 16:47:14.554 notify: debug 3: zone 123.168.192.in-addr.arpa/IN/internal: sending notify to ###DEST_IP####53
+18-Aug-2015 16:47:14.555 notify: info: zone mybindtest.com/IN/internal: sending notifies (serial 2014090401)
+18-Aug-2015 16:47:14.555 notify: debug 3: zone 123.168.192.in-addr.arpa/IN/internal: notify response from ###CLIENT_IP####53: NOERROR
+18-Aug-2015 16:47:15.055 notify: debug 3: zone mybindtest.com/IN/internal: sending notify to ###DEST_IP####53
+18-Aug-2015 16:47:15.056 notify: debug 3: zone mybindtest.com/IN/internal: notify response from ###CLIENT_IP####53: NOERROR

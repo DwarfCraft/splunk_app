@@ -1,0 +1,1 @@
+if(Splunk.Module.SimpleResultsTable){Splunk.Module.SimpleResultsTable=$.klass(Splunk.Module.SimpleResultsTable,{renderResults:function($super,a){$super(a);if(this.getInferredEntityName()=="events"){this.renderedCount=$("tr",this.container).length-1}$.each($(".simpleResultsTable td"),function(b,c){$(this).attr("data-value",$(this).text())})}})};
