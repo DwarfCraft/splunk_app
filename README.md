@@ -20,10 +20,5 @@ dns
 
 ## 
 
-## Mods
-Pokemon Go
-TNT one x2
-sit
-laydown
 
 
