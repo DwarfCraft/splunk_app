@@ -1,0 +1,79 @@
+<form>
+  <label>query log</label>
+  <search id="DNS">
+    <query>eventtype="dnsmasq-dns" $src$ $name$ $action$ | fields *</query>
+    <earliest>$field1.earliest$</earliest>
+    <latest>$field1.latest$</latest>
+  </search>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="field1">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+    <input type="text" token="src" searchWhenChanged="true">
+      <label>Client</label>
+      <default>*</default>
+      <prefix>src="</prefix>
+      <suffix>"</suffix>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="dropdown" token="action" searchWhenChanged="true">
+      <label>Action</label>
+      <choice value="response_action=&quot;answered&quot;">answered</choice>
+      <choice value="response_action=&quot;blocked&quot;">blocked</choice>
+      <choice value="*">*</choice>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+    <input type="text" token="name" searchWhenChanged="true">
+      <label>Domain</label>
+      <default>*</default>
+      <prefix>name="</prefix>
+      <suffix>"</suffix>
+      <initialValue>*</initialValue>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>Query Summary</title>
+      <table>
+        <search base="DNS">
+          <query>| stats values(src) AS Client, values(name) AS Domain ,count(eval(eventtype=="dnsmasq-dns-query")) AS Query, count(eval(eventtype=="dnsmasq-dns-response")) AS Response, values(response_action) AS "Action" by _time</query>
+        </search>
+        <option name="count">10</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Events</title>
+      <input type="multiselect" token="eventtype" searchWhenChanged="true">
+        <label>eventtype</label>
+        <choice value="query">query</choice>
+        <choice value="response">response</choice>
+        <default>query,response</default>
+        <initialValue>query,response</initialValue>
+        <valuePrefix>eventtype="dnsmasq-dns-</valuePrefix>
+        <valueSuffix>"</valueSuffix>
+        <delimiter> OR </delimiter>
+      </input>
+      <event>
+        <search base="DNS">
+          <query>| where $eventtype$</query>
+        </search>
+        <option name="list.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </event>
+    </panel>
+  </row>
+</form>

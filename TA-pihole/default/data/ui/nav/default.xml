@@ -1,0 +1,7 @@
+ <nav search_view="search" color="#dd6600">
+   <view name="dnsmasq" default="true" />
+   <view name="query_log" default="false" />
+   <view name="dnscryptproxy" default="false" />
+   <view name="search" default="false" />
+   <view name="alerts" />
+ </nav>
