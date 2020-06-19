@@ -20,5 +20,9 @@ dns
 
 ## 
 
-
+## Index used
+em_metrics = used for metric collections
+computers = 
+minecraft = 
+network = 
 
