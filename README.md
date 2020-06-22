@@ -2,7 +2,42 @@
 
 Setting up Splunk apps for auto deployment
 
-## Monitoring:
+## Splunk Setup for Home Monitoring
+### Backups
+
+Backups | Location
+--- | ---
+Profiles | C:\User\*
+Pictures | C:\User\*\Pictures
+Minecraft Maps | X:\Minecraft
+D&D Books | ??
+
+
+### Monitoring
+
+#### Collections:
+Windows Event Logs
+Minecraft Logs
+Syslogs
+Computer Metrics
+CPU
+Memory
+Disk Storage
+Network IO
+Disk IO
+Processes
+Battery Life
+Temperture
+
+#### Utilities:
+speedtesting
+DNS Logs
+Camera stats
+MyCloud Storage
+Printer Ink
+
+
+#### Website Monitoring:
 Website checking | description
 --- | ---
 my cloud | 
